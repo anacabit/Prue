@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ver mi Oso SVG</title>
+</head>
+<body>
+
+    <h1>Mi Oso de Peluche</h1>
+    
+    <!-- Pega el código SVG directamente aquí -->
+    <svg xmlns="http://w3.org" viewBox="0 0 300 300" width="300" height="300">
+      <style>
+        .fondo { fill: #E0F7FA; rx: 14px; }
+        .piel-oscura { fill: #8D6E63; }
+        .piel-clara { fill: #D7CCC8; }
+        .detalles { fill: #3E2723; }
+        .linea { stroke: #3E2723; stroke-width: 3; stroke-linecap: round; fill: none; }
+      </style>
+      <rect class="fondo" x="0" y="0" width="300" height="300" />
+      <circle class="piel-oscura" cx="92" cy="62" r="25" />
+      <circle class="piel-oscura" cx="208" cy="62" r="25" />
+      <circle class="piel-clara" cx="92" cy="62" r="15" />
+      <circle class="piel-clara" cx="208" cy="62" r="15" />
+      <ellipse class="piel-oscura" cx="82" cy="175" rx="28" ry="48" />
+      <ellipse class="piel-oscura" cx="218" cy="175" rx="28" ry="48" />
+      <ellipse class="piel-oscura" cx="105" cy="245" rx="35" ry="25" />
+      <ellipse class="piel-oscura" cx="195" cy="245" rx="35" ry="25" />
+      <ellipse class="piel-oscura" cx="150" cy="190" rx="75" ry="75" />
+      <ellipse class="piel-clara" cx="150" cy="195" rx="50" ry="50" />
+      <circle class="piel-oscura" cx="150" cy="92" r="62" />
+      <ellipse class="piel-clara" cx="150" cy="105" rx="25" ry="18" />
+      <circle class="detalles" cx="125" cy="88" r="5" />
+      <circle class="detalles" cx="175" cy="88" r="5" />
+      <circle class="detalles" cx="150" cy="102" r="7" />
+      <path class="linea" d="M140,113 Q150,122 160,113" />
+      <path class="linea" d="M118,160 Q150,180 182,160" />
+    </svg>
+
+</body>
+</html>
