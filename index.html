@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparativa de Osos SVG</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #334e68;
+      margin-bottom: 30px;
+    }
+    .container {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+      padding: 20px;
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      color: #486581;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    svg {
+      width: 300px;
+      height: 300px;
+      border-radius: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Visualización de Diseños SVG</h1>
+
+  <div class="container">
+    
+    <!-- VERSÍON 1: Tonos Cálidos y Rotación -->
+    <div class="card">
+      <h2>Versión 1: Tonos Cálidos (Brazos Rotados)</h2>
+      <svg viewBox="0 0 300 300">
+        <style>
+          .v1-fondo { fill: #FFDEB4; }
+          .v1-piel { fill: #B3704C; }
+          .v1-piel-clara { fill: #E6A15C; }
+          .v1-piel-oscura { fill: #8A4F35; }
+          .v1-detalles { fill: #2B1B17; }
+          .v1-linea { stroke: #2B1B17; stroke-width: 3; stroke-linecap: round; fill: none; }
+        </style>
+        <rect x="0" y="0" width="300" height="300" rx="14" class="v1-fondo" />
+        <circle cx="92" cy="62" r="25" class="v1-piel" />
+        <circle cx="92" cy="62" r="15" class="v1-piel-clara" />
+        <circle cx="208" cy="62" r="25" class="v1-piel" />
+        <circle cx="208" cy="62" r="15" class="v1-piel-clara" />
+        <ellipse cx="82" cy="175" rx="28" ry="48" class="v1-piel" transform="rotate(15 82 175)" />
+        <ellipse cx="218" cy="175" rx="28" ry="48" class="v1-piel" transform="rotate(-15 218 175)" />
+        <ellipse cx="105" cy="245" rx="35" ry="25" class="v1-piel" />
+        <ellipse cx="105" cy="245" rx="23" ry="15" class="v1-piel-clara" />
+        <ellipse cx="195" cy="245" rx="35" ry="25" class="v1-piel" />
+        <ellipse cx="195" cy="245" rx="23" ry="15" class="v1-piel-clara" />
+        <ellipse cx="150" cy="190" rx="75" ry="75" class="v1-piel" />
+        <ellipse cx="150" cy="195" rx="50" ry="50" class="v1-piel-clara" />
+        <path d="M118,160 Q150,180 182,160" class="v1-linea" />
+        <circle cx="150" cy="92" r="62" class="v1-piel" />
+        <circle cx="125" cy="88" r="5" class="v1-detalles" />
+        <circle cx="125" cy="86" r="1.5" fill="#FFFFFF" />
+        <circle cx="175" cy="88" r="5" class="v1-detalles" />
+        <circle cx="175" cy="86" r="1.5" fill="#FFFFFF" />
+        <ellipse cx="150" cy="105" rx="25" ry="18" class="v1-piel-clara" />
+        <circle cx="150" cy="102" r="7" class="v1-piel-oscura" />
+        <path d="M140,113 Q150,122 160,113" class="v1-linea" />
+      </svg>
+    </div>
+
+    <!-- VERSIÓN 2: Estricta con Coordenadas del JSON -->
+    <div class="card">
+      <h2>Versión 2: Paleta Pastel (Alineación Estricta)</h2>
+      <svg viewBox="0 0 300 300">
+        <style>
+          .v2-bg { fill: #E8F1F5; }
+          .v2-base { fill: #C69C72; }
+          .v2-dark { fill: #8C6239; }
+          .v2-light { fill: #F3E5D8; }
+          .v2-face { fill: #332211; }
+          .v2-stroke-line { stroke: #332211; stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+        </style>
+        <rect x="0" y="0" width="300" height="300" rx="14" class="v2-bg" />
+        <circle cx="92" cy="62" r="25" class="v2-base" />
+        <circle cx="92" cy="62" r="14" class="v2-light" />
+        <circle cx="208" cy="62" r="25" class="v2-base" />
+        <circle cx="208" cy="62" r="14" class="v2-light" />
+        <ellipse cx="82" cy="175" rx="28" ry="48" class="v2-base" />
+        <ellipse cx="218" cy="175" rx="28" ry="48" class="v2-base" />
+        <ellipse cx="105" cy="245" rx="35" ry="25" class="v2-base" />
+        <ellipse cx="105" cy="245" rx="22" ry="14" class="v2-light" />
+        <ellipse cx="195" cy="245" rx="35" ry="25" class="v2-base" />
+        <ellipse cx="195" cy="245" rx="22" ry="14" class="v2-light" />
+        <ellipse cx="150" cy="190" rx="75" ry="75" class="v2-base" />
+        <ellipse cx="150" cy="195" rx="48" ry="48" class="v2-light" />
+        <path d="M118,160 Q150,180 182,160" class="v2-stroke-line" />
+        <circle cx="150" cy="92" r="62" class="v2-base" />
+        <circle cx="125" cy="88" r="5" class="v2-face" />
+        <circle cx="123.5" cy="86.5" r="1.5" fill="#FFFFFF" />
+        <circle cx="175" cy="88" r="5" class="v2-face" />
+        <circle cx="173.5" cy="86.5" r="1.5" fill="#FFFFFF" />
+        <ellipse cx="150" cy="105" rx="25" ry="18" class="v2-light" />
+        <circle cx="150" cy="102" r="7" class="v2-dark" />
+        <path d="M140,113 Q150,122 160,113" class="v2-stroke-line" />
+      </svg>
+    </div>
+
+  </div>
+
+</body>
+</html>
