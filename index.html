@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Galeía de Animales SVG</title>
+    <title>Galería de Animales SVG</title>
     <style>
         /* Contenedor que alinea los animales de lado a lado */
         .galeria {
@@ -10,24 +10,33 @@
             gap: 20px;
             flex-wrap: wrap;
             font-family: sans-serif;
+            background-color: #f5f5f7;
+            padding: 20px;
         }
         /* Tarjeta para cada animal */
         .tarjeta-animal {
             text-align: center;
-            border: 1px solid #ddd;
+            border: 1px solid #e5e5e5;
             border-radius: 14px;
-            padding: 10px;
+            padding: 15px;
             background: #fff;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        /* Título del animal */
+        .tarjeta-animal h3 {
+            margin: 10px 0 0 0;
+            color: #333;
         }
         /* Estilos del lienzo SVG */
         svg { width: 300px; height: 300px; display: block; }
         
         /* --- ESTILOS DE COLOR PARA LAS FIGURAS --- */
-        rect { fill: #f0f0f0; } /* Fondo gris claro */
-        circle, ellipse { fill: #d2b48c; stroke: #8b4513; stroke-width: 2; } /* Cuerpo base */
-        
-        /* Ojos y pupilas (asumiendo que las pupilas son los últimos círculos) */
-        svg > circle { fill: #000; } 
+        .fondo { fill: #f0f0f0; } 
+        .orejas, .cabeza { fill: #d2b48c; stroke: #8b4513; stroke-width: 4; } 
+        .ojos { fill: #fff; stroke: #000; stroke-width: 2; }
+        .pupilas { fill: #000; }
+        .hocico { fill: #eebb99; stroke: #8b4513; stroke-width: 2; }
+        .nariz { fill: #222; }
         
         /* Líneas de la boca o detalles */
         path { fill: none; stroke: #000; stroke-width: 3; stroke-linecap: round; }
@@ -39,81 +48,66 @@
     <div id="galeria-animales" class="galeria"></div>
 
     <script>
-        // LISTA DE ANIMALES: Aquí agrupas todos tus objetos
+        // LISTA DE ANIMALES: Estructura corregida con clases asignadas
         const animales = [
-            // 1. PERRO
             { 
                 name: '🐶 Perro', 
                 vb: '0 0 300 300', 
                 zones: [ 
-                    { t: 'rect', a: { x: 0, y: 0, width: 300, height: 300, rx: 14 } }, 
-                    { t: 'ellipse', a: { cx: 88, cy: 125, rx: 28, ry: 55, transform: 'rotate(20,88,125)' } }, 
-                    { t: 'ellipse', a: { cx: 212, cy: 125, rx: 28, ry: 55, transform: 'rotate(-20,212,125)' } }, 
-                    { t: 'circle', a: { cx: 150, cy: 155, r: 75 } }, 
-                    { t: 'ellipse', a: { cx: 125, cy: 145, rx: 9, ry: 13 } }, 
-                    { t: 'ellipse', a: { cx: 175, cy: 145, rx: 9, ry: 13 } }, 
-                    { t: 'ellipse', a: { cx: 150, cy: 178, rx: 18, ry: 13 } } 
-                ], 
-                decos: [ 
-                    { t: 'circle', a: { cx: 125, cy: 145, r: 3 } }, 
-                    { t: 'circle', a: { cx: 175, cy: 145, r: 3 } }, 
-                    { t: 'path', a: { d: 'M135,195 Q150,205 165,195' } } 
+                    { t: 'rect', a: { x: 0, y: 0, width: 300, height: 300, rx: 14, class: 'fondo' } }, 
+                    // Orejas
+                    { t: 'ellipse', a: { cx: 80, cy: 120, rx: 25, ry: 55, transform: 'rotate(25,80,120)', class: 'orejas' } }, 
+                    { t: 'ellipse', a: { cx: 220, cy: 120, rx: 25, ry: 55, transform: 'rotate(-25,220,120)', class: 'orejas' } }, 
+                    // Cabeza base
+                    { t: 'circle', a: { cx: 150, cy: 160, r: 70, class: 'cabeza' } }, 
+                    // Hocico de fondo
+                    { t: 'ellipse', a: { cx: 150, cy: 190, rx: 35, ry: 25, class: 'hocico' } },
+                    // Ojos (Blanco)
+                    { t: 'circle', a: { cx: 125, cy: 145, r: 12, class: 'ojos' } }, 
+                    { t: 'circle', a: { cx: 175, cy: 145, r: 12, class: 'ojos' } },
+                    // Pupilas (Negro)
+                    { t: 'circle', a: { cx: 125, cy: 145, r: 5, class: 'pupilas' } }, 
+                    { t: 'circle', a: { cx: 175, cy: 145, r: 5, class: 'pupilas' } },
+                    // Nariz
+                    { t: 'ellipse', a: { cx: 150, cy: 180, rx: 15, ry: 10, class: 'nariz' } },
+                    // Boca
+                    { t: 'path', a: { d: 'M 135,195 Q 150,210 150,195 Q 150,210 165,195' } }
                 ] 
-            },
-            
-            // 2. OSO (Reemplaza este objeto de ejemplo por las coordenadas reales de tu oso)
-            {
-                name: '🐻 Oso',
-                vb: '0 0 300 300',
-                zones: [
-                    { t: 'rect', a: { x: 0, y: 0, width: 300, height: 300, rx: 14 } },
-                    // REEMPLAZA ESTO: Agrega aquí los objetos zones de tu oso
-                    { t: 'circle', a: { cx: 150, cy: 150, r: 70 } } 
-                ],
-                decos: [
-                    // REEMPLAZA ESTO: Agrega aquí los objetos decos de tu oso
-                    { t: 'circle', a: { cx: 125, cy: 140, r: 5 } }
-                ]
             }
         ];
 
-        const svgNS = "http://w3.org";
-        const galeria = document.getElementById("galeria-animales");
-
-        // Función para convertir los datos geométricos en nodos SVG reales
-        function crearFigura(shape) {
-            const el = document.createElementNS(svgNS, shape.t);
-            for (const attr in shape.a) {
-                el.setAttribute(attr, shape.a[attr]);
-            }
-            return el;
-        }
-
-        // Bucle que recorre la lista y dibuja cada animal dinámicamente
+        const galeria = document.getElementById('galeria-animales');
+        const svgNS = "http://w3.org"; // Namespace necesario para SVG dinámicos
+        
         animales.forEach(animal => {
-            // Crear contenedor de la tarjeta
-            const tarjeta = document.createElement("div");
-            tarjeta.className = "tarjeta-animal";
-
-            // Crear el elemento SVG
-            const svgEl = document.createElementNS(svgNS, "svg");
-            svgEl.setAttribute("viewBox", animal.vb);
-
-            // Inyectar zonas y decoraciones en el SVG
-            animal.zones.forEach(zone => svgEl.appendChild(crearFigura(zone)));
-            animal.decos.forEach(deco => svgEl.appendChild(crearFigura(deco)));
-
-            // Crear el título del animal (nombre)
-            const titulo = document.createElement("p");
-            titulo.textContent = animal.name;
-
-            // Armar la estructura dentro de la tarjeta
-            tarjeta.appendChild(svgEl);
-            tarjeta.appendChild(titulo);
+            // 1. Crear tarjeta contenedor
+            const tarjeta = document.createElement('div');
+            tarjeta.className = 'tarjeta-animal';
             
-            // Agregar la tarjeta a la galería visible en pantalla
+            // 2. Crear elemento SVG con su espacio de nombres
+            const svgElem = document.createElementNS(svgNS, 'svg');
+            svgElem.setAttribute('viewBox', animal.vb);
+            
+            // 3. Crear cada figura interna del animal
+            animal.zones.forEach(zone => {
+                const figura = document.createElementNS(svgNS, zone.t);
+                for (let key in zone.a) {
+                    figura.setAttribute(key, zone.a[key]);
+                }
+                svgElem.appendChild(figura);
+            });
+            
+            // 4. Crear el título
+            const titulo = document.createElement('h3');
+            titulo.textContent = animal.name;
+            
+            // 5. Armar la estructura final en el DOM
+            tarjeta.appendChild(svgElem);
+            tarjeta.appendChild(titulo);
             galeria.appendChild(tarjeta);
         });
     </script>
 </body>
 </html>
+
+            
