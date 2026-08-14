@@ -36,6 +36,26 @@
       <path class="linea" d="M140,113 Q150,122 160,113" />
       <path class="linea" d="M118,160 Q150,180 182,160" />
     </svg>
+    /* 28. PERRO */
+{
+  name: '🐶 Perro',
+  vb: '0 0 300 300',
+  zones: [
+    { t: 'rect', a: { x: 0, y: 0, width: 300, height: 300, rx: 14 } }, // Fondo (atrás de todo)
+    { t: 'ellipse', a: { cx: 88, cy: 125, rx: 28, ry: 55, transform: 'rotate(20,88,125)' } }, // Oreja Izquierda (ahora rota a la derecha y va atrás)
+    { t: 'ellipse', a: { cx: 212, cy: 125, rx: 28, ry: 55, transform: 'rotate(-20,212,125)' } }, // Oreja Derecha (ahora rota a la izquierda y va atrás)
+    { t: 'circle', a: { cx: 150, cy: 155, r: 75 } }, // Cabeza (ahora tapa las orejas)
+    { t: 'ellipse', a: { cx: 125, cy: 145, rx: 9, ry: 13 } },
+    { t: 'ellipse', a: { cx: 175, cy: 145, rx: 9, ry: 13 } },
+    { t: 'ellipse', a: { cx: 150, cy: 178, rx: 18, ry: 13 } }
+  ],
+  decos: [
+    { t: 'circle', a: { cx: 125, cy: 145, r: 3 } },
+    { t: 'circle', a: { cx: 175, cy: 145, r: 3 } },
+    { t: 'path', a: { d: 'M135,195 Q150,205 165,195' } }
+  ]
+}
+
 
 </body>
 </html>
