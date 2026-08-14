@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Galeía de Animales SVG</title>
+    <style>
+        /* Contenedor que alinea los animales de lado a lado */
+        .galeria {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-family: sans-serif;
+        }
+        /* Tarjeta para cada animal */
+        .tarjeta-animal {
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 14px;
+            padding: 10px;
+            background: #fff;
+        }
+        /* Estilos del lienzo SVG */
+        svg { width: 300px; height: 300px; display: block; }
+        
+        /* --- ESTILOS DE COLOR PARA LAS FIGURAS --- */
+        rect { fill: #f0f0f0; } /* Fondo gris claro */
+        circle, ellipse { fill: #d2b48c; stroke: #8b4513; stroke-width: 2; } /* Cuerpo base */
+        
+        /* Ojos y pupilas (asumiendo que las pupilas son los últimos círculos) */
+        svg > circle { fill: #000; } 
+        
+        /* Líneas de la boca o detalles */
+        path { fill: none; stroke: #000; stroke-width: 3; stroke-linecap: round; }
+    </style>
+</head>
+<body>
+
+    <!-- Contenedor principal donde aparecerán todos los animales -->
+    <div id="galeria-animales" class="galeria"></div>
+
+    <script>
+        // LISTA DE ANIMALES: Aquí agrupas todos tus objetos
+        const animales = [
+            // 1. PERRO
+            { 
+                name: '🐶 Perro', 
+                vb: '0 0 300 300', 
+                zones: [ 
+                    { t: 'rect', a: { x: 0, y: 0, width: 300, height: 300, rx: 14 } }, 
+                    { t: 'ellipse', a: { cx: 88, cy: 125, rx: 28, ry: 55, transform: 'rotate(20,88,125)' } }, 
+                    { t: 'ellipse', a: { cx: 212, cy: 125, rx: 28, ry: 55, transform: 'rotate(-20,212,125)' } }, 
+                    { t: 'circle', a: { cx: 150, cy: 155, r: 75 } }, 
+                    { t: 'ellipse', a: { cx: 125, cy: 145, rx: 9, ry: 13 } }, 
+                    { t: 'ellipse', a: { cx: 175, cy: 145, rx: 9, ry: 13 } }, 
+                    { t: 'ellipse', a: { cx: 150, cy: 178, rx: 18, ry: 13 } } 
+                ], 
+                decos: [ 
+                    { t: 'circle', a: { cx: 125, cy: 145, r: 3 } }, 
+                    { t: 'circle', a: { cx: 175, cy: 145, r: 3 } }, 
+                    { t: 'path', a: { d: 'M135,195 Q150,205 165,195' } } 
+                ] 
+            },
+            
+            // 2. OSO (Reemplaza este objeto de ejemplo por las coordenadas reales de tu oso)
+            {
+                name: '🐻 Oso',
+                vb: '0 0 300 300',
+                zones: [
+                    { t: 'rect', a: { x: 0, y: 0, width: 300, height: 300, rx: 14 } },
+                    // REEMPLAZA ESTO: Agrega aquí los objetos zones de tu oso
+                    { t: 'circle', a: { cx: 150, cy: 150, r: 70 } } 
+                ],
+                decos: [
+                    // REEMPLAZA ESTO: Agrega aquí los objetos decos de tu oso
+                    { t: 'circle', a: { cx: 125, cy: 140, r: 5 } }
+                ]
+            }
+        ];
+
+        const svgNS = "http://w3.org";
+        const galeria = document.getElementById("galeria-animales");
+
+        // Función para convertir los datos geométricos en nodos SVG reales
+        function crearFigura(shape) {
+            const el = document.createElementNS(svgNS, shape.t);
+            for (const attr in shape.a) {
+                el.setAttribute(attr, shape.a[attr]);
+            }
+            return el;
+        }
+
+        // Bucle que recorre la lista y dibuja cada animal dinámicamente
+        animales.forEach(animal => {
+            // Crear contenedor de la tarjeta
+            const tarjeta = document.createElement("div");
+            tarjeta.className = "tarjeta-animal";
+
+            // Crear el elemento SVG
+            const svgEl = document.createElementNS(svgNS, "svg");
+            svgEl.setAttribute("viewBox", animal.vb);
+
+            // Inyectar zonas y decoraciones en el SVG
+            animal.zones.forEach(zone => svgEl.appendChild(crearFigura(zone)));
+            animal.decos.forEach(deco => svgEl.appendChild(crearFigura(deco)));
+
+            // Crear el título del animal (nombre)
+            const titulo = document.createElement("p");
+            titulo.textContent = animal.name;
+
+            // Armar la estructura dentro de la tarjeta
+            tarjeta.appendChild(svgEl);
+            tarjeta.appendChild(titulo);
+            
+            // Agregar la tarjeta a la galería visible en pantalla
+            galeria.appendChild(tarjeta);
+        });
+    </script>
+</body>
+</html>
